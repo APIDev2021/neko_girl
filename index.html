@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html data-capo="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NEKOGIRL</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body,
+        html {
+            padding: 0;
+            width: auto
+        }
+
+        body,
+        html {
+            display: flex;
+            margin: 0
+        }
+
+        body {
+            align-items: center;
+            background-color: #fff;
+            flex-direction: column;
+            font-family: Karantina
+        }
+
+        #nt-container {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            left: 0;
+            position: static;
+            right: 0;
+            top: 0;
+            width: 100%
+        }
+
+        .nt-wrapper-class {
+            background-color: green;
+            border-radius: 10px;
+            color: #fff;
+            font-family: Courier New, Courier, monospace;
+            margin: 10px;
+            max-width: 400px;
+            padding: 10px;
+            position: fixed;
+            text-align: center;
+            top: 0;
+            z-index: 1000
+        }
+
+        .center-content {
+            justify-content: center;
+            width: 100vw
+        }
+
+        .app-content,
+        .center-content {
+            align-items: center;
+            box-sizing: content-box;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0
+        }
+
+        .center-content-width {
+            max-width: 700px;
+            padding: 20px
+        }
+
+        .text-content {
+            font-family: Courier New, Courier, monospace;
+            font-size: 1em
+        }
+
+        h1 {
+            font-size: 6em
+        }
+
+        h3 {
+            font-size: 2em
+        }
+
+        .row__wrap-on-mobile {
+            align-items: center;
+            display: flex;
+            gap: 20px;
+            justify-content: center
+        }
+
+        @media (max-width:600px) {
+            .row__wrap-on-mobile {
+                flex-direction: column
+            }
+        }
+
+        h1 {
+            margin: 0
+        }
+
+        .bottom {
+            bottom: 0;
+            position: absolute
+        }
+
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+            position: fixed;
+
+            img {
+                height: 100px
+            }
+        }
+
+        .bottom-right {
+            bottom: 0;
+            position: fixed;
+            right: 0;
+
+            img {
+                height: 100px
+            }
+        }
+
+        .top-left {
+            left: 0;
+            position: fixed;
+            top: 0;
+
+            img {
+                height: 100px
+            }
+        }
+
+        .top-right {
+            position: fixed;
+            right: 0;
+            top: 0;
+
+            img {
+                height: 100px
+            }
+        }
+
+        @media screen and (max-width:600px) {
+
+            .bottom-left,
+            .bottom-right {
+                display: none
+            }
+
+            .top-left,
+            .top-right {
+                position: absolute
+            }
+        }
+
+        .waifu-word {
+            background-color: #e41e25;
+            color: #fff;
+            font-size: 1em;
+            font-weight: 700;
+            height: 1em;
+            padding: 0 20px
+        }
+
+        .subtitle {
+            align-items: center;
+            display: flex;
+            font-size: 2.5em;
+            font-weight: 0;
+            gap: 12px
+        }
+
+        .header-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 0;
+            padding: 0
+        }
+
+        .header__wrap-on-mobile {
+            align-items: center;
+            display: flex;
+            gap: 20px;
+            height: 100vh;
+            justify-content: center
+        }
+
+        .logo__outer_container {
+            align-items: center;
+            display: block;
+            justify-content: center;
+            width: 450px
+        }
+
+        @media screen and (max-width:1000px) {
+
+            .logo,
+            .logo__container {
+                width: 50%
+            }
+
+            .logo__outer_container {
+                align-items: center;
+                display: flex
+            }
+
+            .header-section {
+                padding-left: 20px;
+                padding-right: 20px
+            }
+
+            h1 {
+                font-size: 4em
+            }
+
+            .header__wrap-on-mobile {
+                align-items: center;
+                flex-direction: column;
+                justify-content: center
+            }
+
+            .filler {
+                height: 150px
+            }
+        }
+
+        .logo__container {
+            aspect-ratio: 1;
+            display: flex;
+            max-width: 450px;
+            position: relative;
+
+            img {
+                height: auto;
+                left: 0;
+                max-width: 100%;
+                position: absolute;
+                top: 0
+            }
+        }
+
+        .logo_1 {
+            z-index: 0
+        }
+
+        .logo_1,
+        .logo_2 {
+            left: 0;
+            position: relative
+        }
+
+        .logo_2 {
+            transition: transform .2s;
+            z-index: 1
+        }
+
+        .logo_2--rotate {
+            transform: rotate(-30deg)
+        }
+
+        .logo__container {
+            animation: pulse 2s infinite;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 #000;
+            transform: scale(1)
+        }
+
+        .logo__container:hover {
+            animation: pulse .5s infinite
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(132, 255, 253, .5);
+                transform: scale(.95)
+            }
+
+            75% {
+                box-shadow: 0 0 0 30px transparent;
+                transform: scale(1)
+            }
+
+            to {
+                box-shadow: 0 0 0 0 rgba(132, 255, 253, 0);
+                transform: scale(.95)
+            }
+        }
+
+        .app-content-chart {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 700px;
+            text-align: center;
+            width: 50vw;
+
+            h3 {
+                text-align: center
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .app-content-chart {
+                min-width: 90vw
+            }
+        }
+
+        .address {
+            background-color: #fff;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%
+        }
+
+        .crypto_address__row {
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            gap: 10px
+        }
+
+        .copy_button:hover {
+            transform: scale(1.05)
+        }
+
+        .links_small>:hover {
+            transform: scale(1.1)
+        }
+
+        .hashtags {
+            border-radius: 10px;
+            margin: 10px;
+            max-width: 400px;
+            padding: 10px;
+            width: 100%
+        }
+
+        .meme_image {
+            border-radius: 12px;
+            max-width: 80vw
+        }
+
+        .nft-row {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center
+        }
+
+        @media screen and (max-width:600px) {
+            .nft-row {
+                align-content: center;
+                align-items: center;
+                display: flex;
+                flex-direction: row;
+                justify-content: center
+            }
+
+            .nft-row a {
+                width: auto
+            }
+
+            .nft-thumb {
+                width: 42vw
+            }
+        }
+
+        h3 {
+            font-size: 3em;
+            text-align: left;
+            text-decoration: underline
+        }
+
+        .links a,
+        .links img {
+            height: 50px
+        }
+
+        .links {
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            margin-bottom: 10px;
+            margin-top: 50px;
+            min-height: 150px;
+            padding: 20px;
+            width: 100vw
+        }
+
+        @media screen and (max-width:600px) {
+            .links {
+                align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap
+            }
+        }
+
+        .links_small {
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            justify-content: center;
+            padding: 20px;
+            width: 100vw;
+
+            a {
+                animation-fill-mode: forwards;
+                opacity: 0
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .links_small {
+                gap: 12px;
+                scale: .9
+            }
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row
+        }
+
+        .center-content-uniswap {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        @media screen and (max-width:600px) {
+            .center-content-uniswap {
+                width: 100%
+            }
+        }
+
+        .uniswap-button {
+            align-items: center;
+            background-color: #e80366;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            font-family: Karantina;
+            font-size: 1.9em;
+            gap: 12px;
+            height: 55px;
+            justify-content: center;
+            max-width: 200px
+        }
+
+        .uniswap-button:hover {
+            transform: scale(1.05)
+        }
+
+        @media screen and (max-width:1000px) {
+            .uniswap-button {
+                max-width: 100%
+            }
+        }
+
+        a button {
+            width: 100%
+        }
+
+        .button-link {
+            text-decoration: none
+        }
+
+        .data-points span {
+            font-size: 1.5em;
+            height: 1.2em;
+            text-align: center
+        }
+
+        .data-points {
+            display: flex;
+            flex-direction: column;
+            font-family: Karantina;
+            font-size: 1em;
+            font-weight: 400;
+            gap: 30px;
+            max-width: 800px;
+            row-gap: 0
+        }
+
+        .row-button {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center
+        }
+
+        .small_waifu {
+            height: 100px;
+            transform: translateY(-10px)
+        }
+
+        .row__centered {
+            align-items: center;
+            justify-content: center
+        }
+
+        .animate-in {
+            animation-duration: 5s;
+            animation-name: topFadeOut;
+            color: #00a5d1;
+            display: flex;
+            font-family: Gentium Basic, Verdana, Slabo\ 27px, Vollkorn, serif;
+            font-size: 45px;
+            justify-content: center;
+            left: 0;
+            opacity: 1;
+            position: absolute;
+            right: 0;
+            top: 5rem
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50%)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeInDown2 {
+            0% {
+                opacity: 0;
+                transform: translateY(-20%)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .fadeInDown-animation:hover {
+            transform: scale(1.1) !important
+        }
+
+        .fadeInDown-animation {
+            animation: fadeInDown 1.2s
+        }
+
+        .fadeInDown-animation-large {
+            animation: fadeInDown2 1.2s
+        }
+
+        .fadeInDown-animation-large--opacity-0 {
+            opacity: 0
+        }
+
+        .fadeInDown-animation-large--delay {
+            animation-delay: .5s;
+            animation-fill-mode: forwards
+        }
+
+        .links_small :nth-child(0) {
+            animation-delay: 50ms
+        }
+
+        .links_small :first-child {
+            animation-delay: .1s
+        }
+
+        .links_small :nth-child(2) {
+            animation-delay: .15s
+        }
+
+        .links_small :nth-child(3) {
+            animation-delay: .2s
+        }
+
+        .links_small :nth-child(4) {
+            animation-delay: .25s
+        }
+
+        .links_small :nth-child(5) {
+            animation-delay: .3s
+        }
+
+        .links_small :nth-child(6) {
+            animation-delay: .35s
+        }
+    </style>
+    <style>
+        @font-face {
+            font-display: swap;
+            font-family: Karantina;
+            font-style: normal;
+            font-weight: 400;
+            src: url(_nuxt/Karantina-400-1.CLHOJvnf.woff2) format("woff2");
+            unicode-range: u+0590-05ff, u+200c-2010, u+20aa, u+25cc, u+fb1d-fb4f
+        }
+
+        @font-face {
+            font-display: swap;
+            font-family: Karantina;
+            font-style: normal;
+            font-weight: 400;
+            src: url("data:font/woff2;base64,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") format("woff2");
+            unicode-range: u+0100-02af, u+0304, u+0308, u+0329, u+1e00-1e9f, u+1ef2-1eff, u+2020, u+20a0-20ab, u+20ad-20c0, u+2113, u+2c60-2c7f, u+a720-a7ff
+        }
+
+        @font-face {
+            font-display: swap;
+            font-family: Karantina;
+            font-style: normal;
+            font-weight: 400;
+            src: url(_nuxt/Karantina-400-3.BQJgNXbZ.woff2) format("woff2");
+            unicode-range: u+00??, u+0131, u+0152-0153, u+02bb-02bc, u+02c6, u+02da, u+02dc, u+0304, u+0308, u+0329, u+2000-206f, u+2074, u+20ac, u+2122, u+2191, u+2193, u+2212, u+2215, u+feff, u+fffd
+        }
+    </style>
+    <style>
+        .row__first_child {
+            img {
+                width: 200px
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .row__first_child {
+                img {
+                    width: 100px
+                }
+            }
+        }
+
+        .road_map {
+            align-items: center;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px
+        }
+    </style>
+    <style>
+        .waifu__nft {
+            font-size: 25px
+        }
+    </style>
+    <style>
+        .button-30-2 {
+            align-items: center;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: #8b547b;
+            border-radius: 4px;
+            border-width: 0;
+            box-shadow: 0 2px 4px rgba(45, 35, 66, .4), 0 7px 13px -3px rgba(45, 35, 66, .3), inset 0 -3px 0 #d6d6e7;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: JetBrains Mono, monospace;
+            font-size: 18px;
+            height: 48px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            touch-action: manipulation;
+            transition: box-shadow .15s, transform .15s;
+            -moz-user-select: none;
+            user-select: none;
+            -webkit-user-select: none;
+            white-space: nowrap;
+            will-change: box-shadow, transform
+        }
+
+        .button-30-2:focus {
+            box-shadow: inset 0 0 0 1.5px #d6d6e7, 0 2px 4px rgba(45, 35, 66, .4), 0 7px 13px -3px rgba(45, 35, 66, .3), inset 0 -3px 0 #d6d6e7
+        }
+
+        .button-30-2:hover {
+            box-shadow: 0 4px 8px rgba(45, 35, 66, .4), 0 7px 13px -3px rgba(45, 35, 66, .3), inset 0 -3px 0 #d6d6e7;
+            transform: translateY(-2px)
+        }
+
+        .button-30-2:active {
+            box-shadow: inset 0 3px 7px #d6d6e7;
+            transform: translateY(2px)
+        }
+    </style>
+    <style>
+        .row__waifunomics {
+            align-items: center;
+            display: flex
+        }
+
+        .row__first_child {
+            img {
+                width: 150px
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .row__first_child {
+                img {
+                    width: 100px
+                }
+            }
+        }
+
+        .road_map {
+            align-items: center;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px
+        }
+    </style>
+    <link rel="stylesheet" href="_nuxt/entry.9NuzDK0H.css">
+    <link rel="stylesheet" href="_nuxt/index.DznudDLT.css">
+    <link rel="stylesheet" href="_nuxt/MemeGrid.NLDjStH2.css">
+    <link rel="modulepreload" as="script" crossorigin href="_nuxt/gYbe2_Ib.js">
+    <link rel="modulepreload" as="script" crossorigin href="_nuxt/DtG6udFN.js">
+    <link rel="modulepreload" as="script" crossorigin href="_nuxt/BaqDR8GM.js">
+    <link rel="prefetch" as="script" crossorigin href="_nuxt/fpzZjz-p.js">
+    <link rel="prefetch" as="script" crossorigin href="_nuxt/gy8WQLyN.js">
+    <link rel="prefetch" as="script" crossorigin href="_nuxt/Cjev38LA.js">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/logo_girl.C676x3m6.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/logo_girl_text_black.GFm6kEl4.png">
+    <link rel="prefetch" as="image" type="image/svg+xml" href="_nuxt/uniswap_icon.O-3WdxgC.svg">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/coingecko2.DmujY-fv.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/full_body_2.CDb_mDhq.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/nft1.DXUZLG9z.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/nft2.CXx7801m.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/nft3.Bt0vV1Ny.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/nft4.DzuLzn8B.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/placeholder.ynxqElCv.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/glasses_girl_4.Dm35neLd.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/hashtags4.B6MRdpkW.png">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/chucknorris1.bmBHp-3g.jpeg">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_0.Cduvxw2u.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_1.BaDi6eDm.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_10.B3og1u0x.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_11.Bdxws3vI.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_2.1q9gwdYn.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_3.s2hk_aDi.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_4.CAhyArl3.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_5.CYJngtoQ.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_6.ZHtbwT0f.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_7.CGwH0le4.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_8.D09xjbbz.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/girl_9.-2J_DUmX.png">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/1.mGKPUClm.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/10.DtgcewZO.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/11.CIhpgTg7.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/12.W7MV4F0m.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/13.BwSw09NY.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/14.DZx0qdC5.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/15.xagN8eDM.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/16.CYeUtt2v.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/17.Bjwj18pY.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/18.mN_WIJjD.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/19.D2P_4c57.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/2.CCxCStj5.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/20.CO9GTgML.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/21.B9rNHze5.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/22.BYJZgfU1.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/23.DSiqI6LI.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/24.BwocmAAt.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/3.BU16xyHW.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/4.CL1OBRFe.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/5.QN4w7Eh0.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/6.CYGmwBd0.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/7.DMaxX2Lx.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/8.DCXV_-PS.jpg">
+    <link rel="prefetch" as="image" type="image/jpeg" href="_nuxt/9.DgjUitds.jpg">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/trump_shoting.BXHwDLS1.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/boysclubv2.D_2E2G4U.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/8woca8.CKKmGUHy.png">
+    <link rel="prefetch" as="image" type="image/png"
+        href="_nuxt/Andrew-Tate-with-Vinny-Shoreman-e1616578614783.DJ9r48EN.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/the&#32;shitcoin.DAXfNQQT.png">
+    <link rel="prefetch" as="image" type="image/png"
+        href="_nuxt/Sad&#32;cat&#32;buy&#32;waifu&#32;on&#32;base.SKrie00D.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/WAIFU&#32;GAINS&#32;WHEN.3NOd1Q6B.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/lordoftherings.D8guxmml.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/WAIFU_UMBRELLA.CstPe8Wy.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/WHEN&#32;MOON.BgLWKnlj.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/bearmarket.BhqicVtY.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/blink.CSu5e0t-.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/blink2.DSN8jP86.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/borat&#32;300k.DCnaqYsR.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/borat500k.CgSW58R7.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/brokebackwaifu.CLoqaDKl.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/chucknorris3.BMDX6c0O.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/cryboy1.DzDZgPSR.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/elon&#32;waifu.9fNgHxqK.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/cryboy3.CevGVanG.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/dummies.CJNGbpIi.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/umbrella&#32;meme&#32;_2.DkvUWIiJ.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/cryboy2.BH6KOUN7.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/elon&#32;waifu2.CTFs-EdQ.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/frog.B97195Z0.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/gains0.B27u7YYW.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/gretha.sw-i3G5T.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/hauktua.EKRcNpVB.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/heresjohnnymeme.DJDnPUj3.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/himim.CDPKAl9H.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/lionking.BcVyUWyN.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/matrixpills.L7rZTgsR.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/matrixpills2.Ck3YM80d.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/megwaifu.B-vMU717.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/milkgirl.Cc793fC1.png">
+    <link rel="prefetch" as="image" type="image/gif" href="_nuxt/moneyshovel.DuGiELfj.gif">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/package-lock.B_L6Lcyi.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/sadcat.DEu9Jt9Q.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/scooby.Y7pM8FaE.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/shooting&#32;meme.BwISc5Wz.png">
+    <link rel="prefetch" as="image" type="image/png"
+        href="https://basedwaifu.net/_nuxt/the&#32;shitcoin&#32;2.CbqswJ2d.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/the&#32;shticoin&#32;3.C6rno-0H.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/waifu&#32;fire.CY87qRar.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/waifu&#32;superhero&#32;5.IDruCoOL.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/animeface_reveal.BLoEZdLX.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/bearmarket_waifustyle.CR_eTgSn.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/black_white_anime_baifu_waifu.BMeq-9XP.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/borat_1m_mc_black_bars.DzVbvzCI.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/borat_600k.D9jNhaiI.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/borat_800k.DQvol5Si.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/boysclub.DcxNnSjr.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/elon_rapper_waifu.BOhawEFU.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/face_reveal_meme.ByNjFcGt.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/guyswantmeme.CO-6Mx3o.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/lamboanime_baufywaifu.DPqIus0f.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/sunny_meme.Di54nbuD.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/waifu&#32;hair.Da_wnCLK.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/waifu800k.xEixhEw7.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/waifu_anime_smash1mill.DKGN5nET.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/waifu_lambo.YaW8Z-Pw.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/waifu_lambo_2.DwnDR11B.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/waifu_pepe_girl_boy_turn_around.DScEmlwW.png">
+    <link rel="prefetch" as="image" type="image/png" href="_nuxt/waifu_tied_yo_meme.A0YRq3Od.png">
+    <link rel="icon" type="image/x-icon" href="NEKO.png">
+    <script type="module" src="_nuxt/gYbe2_Ib.js" crossorigin></script>
+    <script id="unhead:payload" type="application/json">
+        {
+            "title": "NEKOGIRL on ETH"
+        }
+    </script>
+</head>
+
+<body>
+    <div id="__nuxt">
+        <div class="app-content">
+            <div id="nt-container" class="nt-container-class"></div>
+            <!--[-->
+            <div class="center-content">
+                <div class="header__wrap-on-mobile">
+                    <div
+                        class="logo__outer_container fadeInDown-animation-large fadeInDown-animation-large--delay fadeInDown-animation-large--opacity-0">
+                        <div class="logo__container logo"><img src="_nuxt/logo_girl.C676x3m6.png" alt=""
+                                class="logo_1"><img src="_nuxt/logo_girl_text_black.GFm6kEl4.png" alt="" class="logo_2">
+                        </div>
+                    </div>
+                    <div
+                        class="header-section fadeInDown-animation-large fadeInDown-animation-large--delay fadeInDown-animation-large--opacity-0">
+                        <h1>Welcome to <span class="waifu-word">NEKOGIRL</span></h1><span class="subtitle">
+                            <img src="_nuxt/eth_logo.png" style="width: 100px; height: auto;"> The OG anime play on base</span>
+                        <div class="crypto_address__row"><input type="text"
+                                value="CA: 0x00000000000000000000000000000000000000" class="address" readonly><img
+                                src="data:image/svg+xml,%3csvg%20width=&#39;41&#39;%20height=&#39;40&#39;%20viewBox=&#39;0%200%2041%2040&#39;%20fill=&#39;none&#39;%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%3e%3crect%20x=&#39;0.140625&#39;%20width=&#39;40&#39;%20height=&#39;40&#39;%20rx=&#39;10&#39;%20fill=&#39;%23BABABA&#39;%20/%3e%3cpath%20d=&#39;M26.3906%2030.6884H17.0156C16.394%2030.6884%2015.7979%2030.4415%2015.3583%2030.0019C14.9188%2029.5624%2014.6719%2028.9663%2014.6719%2028.3447V15.8447C14.6719%2015.2231%2014.9188%2014.6269%2015.3583%2014.1874C15.7979%2013.7478%2016.394%2013.5009%2017.0156%2013.5009H26.3906C27.0122%2013.5009%2027.6084%2013.7478%2028.0479%2014.1874C28.4874%2014.6269%2028.7344%2015.2231%2028.7344%2015.8447V28.3447C28.7344%2028.9663%2028.4874%2029.5624%2028.0479%2030.0019C27.6084%2030.4415%2027.0122%2030.6884%2026.3906%2030.6884ZM17.0156%2015.0634C16.8084%2015.0634%2016.6097%2015.1457%2016.4632%2015.2922C16.3167%2015.4388%2016.2344%2015.6375%2016.2344%2015.8447V28.3447C16.2344%2028.5519%2016.3167%2028.7506%2016.4632%2028.8971C16.6097%2029.0436%2016.8084%2029.1259%2017.0156%2029.1259H26.3906C26.5978%2029.1259%2026.7965%2029.0436%2026.9431%2028.8971C27.0896%2028.7506%2027.1719%2028.5519%2027.1719%2028.3447V15.8447C27.1719%2015.6375%2027.0896%2015.4388%2026.9431%2015.2922C26.7965%2015.1457%2026.5978%2015.0634%2026.3906%2015.0634H17.0156Z&#39;%20fill=&#39;black&#39;%20/%3e%3cpath%20d=&#39;M12.3281%2022.8759C12.1209%2022.8759%2011.9222%2022.7936%2011.7757%2022.6471C11.6292%2022.5006%2011.5469%2022.3019%2011.5469%2022.0947V12.7197C11.5469%2012.0981%2011.7938%2011.5019%2012.2333%2011.0624C12.6729%2010.6228%2013.269%2010.3759%2013.8906%2010.3759H21.7031C21.9103%2010.3759%2022.109%2010.4582%2022.2556%2010.6047C22.4021%2010.7513%2022.4844%2010.95%2022.4844%2011.1572C22.4844%2011.3644%2022.4021%2011.5631%2022.2556%2011.7096C22.109%2011.8561%2021.9103%2011.9384%2021.7031%2011.9384H13.8906C13.6834%2011.9384%2013.4847%2012.0207%2013.3382%2012.1672C13.1917%2012.3138%2013.1094%2012.5125%2013.1094%2012.7197V22.0947C13.1094%2022.3019%2013.0271%2022.5006%2012.8806%2022.6471C12.734%2022.7936%2012.5353%2022.8759%2012.3281%2022.8759Z&#39;%20fill=&#39;black&#39;%20/%3e%3c/svg%3e"
+                                class="copy_button"></div><a
+                            href="https://app.uniswap.org/"
+                            class="button-link"><button class="uniswap-button"><img
+                                    src="_nuxt/uniswap_icon.O-3WdxgC.svg" alt="uniswap icon"> Buy on Uniswap
+                            </button></a>
+                    </div>
+                    <div class="filler"></div>
+                    <div class="bottom">
+                        <div class="links_small"><a class="fadeInDown-animation link_small"
+                                href="https://x.com/baseWaifu"><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAA3CAYAAACo29JGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMjSURBVHgB3ZrbsdowEIb/XB7ySAlOBaEEdRBKcAfQAU4FkAqSDjgdeE4FnA50XvNEUgGRBntYdIRWqwv4sDO/h5mVpf3Mer2+AH6bGa2Mdkba6DhB7Yf4WghsYXQAcO/gJdIxkJsJBJqj9TWw9QSDTdHGBWsnGmiq7KmFDwOcNmrwOPbX6OsnnP61Fo9lX4z+fDSb73hMU58Rl472mvcPcbZG+RT/afQy/G4QqIrEvtlNUgUKmAKyCwLVjszdQNZURA9UZJHZsBDVjPi3hcA0mXcGebeUtJDy+PcOvDQQ33oNmXOXMIdoME3PLeNXCcGMOjhg68R5xDsshgWv/TuKOQCSNXLAkuAOOKfnHP50ouffXjh/R/ZdZIAlwVnRCrZCOD3niWAN8u9OkndckUB6hNNzFTHfbwdMZ4JlwdGT3neUafpeOwCj9sgr+cXhjkPAo60YfwN/mmnkl/wqcEdcpueO8bsHoFTJrwZHA/SllAvQE5+qCFYE7ojL9FOIS0/6j+aW/KpwVh0Jdsv4Gw/spOGs5kPAMd3LCKYrgRWH05B1L31FsOJwVrQ74boX9d7gjrhMv57xl7r3uxmcxjn9GoS7l5IdyU3grLj07IlfVYqhGpzVnABw3UuN9KwGtsWlcd2L9Uvv/e4C5z5PGU15xvbEL7n3uwucxmUHYkG59As115OBc8HGV2Jcc21Fz8++UDxF4WiAa8jSTyN8+bgrHE2tZcQYrnspkZ5FwDoSVKgohO7tRinGf1M4WvIb8N1G74x308/uXyo9s8D2QrBRXHrSR4dtRnzJO2q8LfmS/bnqyD2bqQbngm0S56DNs6+5bohfJ6wh3uGAcMmXiLu36xl/cbiWLLjMABulyHxc9yJtrkWDO7JQqT5Qg7+3457NZMNJS75EG2du5aghfiWYN2pQznvpWCnEW1R62q8ZXsF/ffCM87m2jBifYr+MfkSOfcXpQ5pZYMyL3ZR88TAlPdmPbJ7xmPZkN74L6HuXppSLiQcrVQvHajx9uoc6XLFuYoFKtQVjLab70fY12ZqxgMBanC4TpZ8llpIe4rO9p/d69x9zK+jptMZwEAAAAABJRU5ErkJggg=="></a><a
+                                class="fadeInDown-animation link_small"
+                                href="https://www.dextools.io/"><img
+                                    src="data:image/png;base64,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"></a><a
+                                class="fadeInDown-animation link_small"
+                                href="https://dexscreener.com/"><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAP9SURBVHgB3ZuNceIwEIU3mRRAB+cOjhJcAh0kqSB0AB3AVQAdQAeECqADcxVABz49Tza3bCRbki2DeTOLg8GyPu1q9RPzRG6NjI2N5cZ+0f3pr7GjsU9jl4DrKrCZsbOxciC2MpaRh+CxgujmFY6xwtikCW5IXnPZqw0uo+F6Ttv5y1lXWt1pZWNtR8p7Q6l4iOWAezY2pcfUK14A+JseUzleXshz/IjRaDSiPM+rY5Zl3+cvlwudTqfKjscjJVLGf3Qa+waoXCwWZVEUpY/O53O52WzKt7e3FP0wHNB4wgm22+3KNkKjuEBRfi+AJtwqEAbFe3isSwFUlx/p4bgQHY/HVUUOh0MVYqnE5c/n8xi4eEAYWrQPrdfrWLh2gLDJZJLUg8vlsg1cPCD6B/cRHH0zZoim0+lVQ/YKCCCZCHBEKHUhlCsz5mq1qs73lkVl35OQ/FkbbyIkkTW5PIyPLGTuXgD1WKfHRbxH1gsRykRmbrqXhE8GqCvG52ez2RUshy08ikQE78DDgOeK4yhDDwAoh0F0po4YC8MAefxjoX/o1sY57VVby8tzDMYZma8HvFREVg0D1DeUHgS87H8AlWGHa+E9eEHCSTBIDurIpK4G7QUQQgX1d2ASjjMhS2dgvkaC24afmwC6wpLNNeNxZUUdrncByMLcEaldDsw45xJ7GY2DyjfNbWMAX6hDmQpXtt/vr87VfR8LXiyAjacphZ6pY5mhgbbbbdA1AHx/f69W+CnUOkR5SaOHg4+Pj7JOCGfdd+tmQ8n7oC1hoN9oMPStkFWGbQC3zYYipmthgK4pmG2rAZ6pSzAQGkGvFOq2PnCfpIBy8uuqgB4XXasMPVH33dNJCtjkEZYMWxxt18mJABrFV7ZJeSeAaO0Qyf5SN6dsSkRaciHcKWDMHoysDIc3+p2cpoVueQQmGn/AmD1PVJ5Dlb0oU72eo/oqYF3oB6jDM6TV5epA7qeGhDzuJ8fGgG1EP0BuaSQLeCJko0l6sW6FUSeEutz3kWW2BuR+olutblaj4XVisHnP1WB6kYv74rueXmwGRHJxLYX0ghQ3hpd08tCJQScsnuYBRpfnqpdnNvUL0Trj7IjwkWGDGYqU3HvRK39dcY4CV8MGWHtAQLlaU3qEQ02GNiBsfQlgLTZ7uwVsMh5e4BW85+Qix8OElh5QZlxOELbEM1hAGIclJ54O/qlyX4AwzrgRS57WgEVfN8Rw0EO/+wG46fGGfdoBcNh0+r8F9lj65sLzoY/wlKG2DHDwIJ6W/UOPpbWxkzwBLyJmh+QhlxXkeHoro+E/M1pQw6Np+HBNt69ojO0o4Lm7/OuCoYDlLpAnqhf/tCCj+xOS4yc1/KTgH2tasZyWVEwmAAAAAElFTkSuQmCC"></a><a
+                                class="fadeInDown-animation link_small"
+                                href="https://www.coingecko.com/en/coins/waifu-2"><img
+                                    src="_nuxt/coingecko2.DmujY-fv.png"></a><a class="fadeInDown-animation link_small"
+                                href="https://www.etherscan.io"><img
+                                    src="data:image/png;base64,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"></a><a
+                                class="fadeInDown-animation link_small" href="https://t.me/nekogirlerc"><img
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAQ+SURBVHgB7ZpNaBNpGMefdzKh69aNWekKi7GksN1laQ+67qW7Fz/A6kkFW72K3sX4hSfTq4qKN0FBb2IFPfl10HrQeFBQMD341cHEQ1UkRsRKJ319/9O+cdpOm3lnkjoz5AfpZPLOvMw/z/P834+G0QzSJ0eSpmmuZESbibMkBR3GS8T5k1g8PmTs7TBmNdtP2o+/3MP5RJZzCr4wBxijUzFdHxBCS9XP5JvUsedHiFOWQg4jZsTisVVSpIY/UREHOPG0KLEr8pyJmkub4+YIRQymTWwt7P/rqlYZH19DEYRzbQ+OTKTnHRHXNRRB9Lj+K2owlI7pijFKapzz6AqkKReNMk2BYacpMOzoFAISLRr1di6mVEKny/kyFT6aru8NtMCeFYuor/sX6v1jMSV+mky2nvZF1H/xjes+AicQojZ0tlJ/V6IqahqclAiEQKTgrn+TIlKt1LWsZd5r8+++kgo/TCBE9XcnrGgham55UPhCKiyoQIhChPb+v5S6fmtxTkFB7vUXygkhGXGdU5sKCyKwZl1NUSyblLk2SuWvE3R2y++z2pGeaFOhYQIRKYja/U9yXlEAD33y3gc6+6gkXDNB2bVtjvcMj6rVH6irQC91dU6IOiHEQSRSN/Pf0jmvzRXGSBXfAuUgjPFKxSxQS/tujFqDNvq4tGN5zfuH3y5gBJ0GYTfIOstNuWFqiU6D21PWcT4Q4XyjBbo1CyfwgOceinS8/2FafzATN33lPdQfcC0QxX9i0zLygr3OJLtWJym7rs11HznF8U/iWmB5rGI9IOrFLaizgTvvp6UW7s+ub6M+kQUqPGi0wJsvPlPX6VfVNMVxrmnVzDqToM6QkrWmY054qT+gbDJ4aLtBYEbSC8HtP1vLGbQ5zfYhCuJqmYkTXgZ4ia9hoigsHi9EF6BGU0vis65DvWF8UzUmier0zE5dV/SDTz9Zqbsi8f17OyKMBGbiVRzwWn+grgKRnuWxCdrWPWkgELt7tf9t12GP9Qfqvidz6WnZWnUDFcedCxiWyhbFTOou8JaoR5mmTvWoSt5H9EDdBdrTNJWY7WGDIsKIiuv+fBgMaMhySaYphNrBkghTNQwVcNW+7tqD/XDQIghkmmJ8lEhxAENL5vpb61UrmrmCvwg2RCAeqmgzBrs4O0jXvovFOUX4TU/QsJ3tzPXRybno7feO4iT4IjDzwXUzU1p1B80JtvzosxFGLE0BwFob7khVzWnjhYIvF9UrekegNn4RzZ4zhlW/EOZ1/mknkFv3fo3FTvPfZ2GnKTDsNAWGHU0j7TFFk5JxuMPQGON3KYKI2dlVHDVN188z4gZFjFhlfABHDb+M5YztpCjBacA4/LeBt5bJFA90Doko7mSMShR2hLjioc6sPK26aOHgn+djprmKcX6BwgijIfFaaxc3+bED6exI0mw1V3LO0xQC4pX4EBzTqe0beZTEbbKj7LMAAAAASUVORK5CYII="></a>
+                        </div>
+                    </div>
+                    <div class="bottom-left"><img src="https://i.gifer.com/ZLnU.gif" class="fadeInDown-animation"></div>
+                    <div class="bottom-right"><img src="https://i.gifer.com/ZLnU.gif" class="fadeInDown-animation">
+                    </div>
+                    <div class="top-left"><img src="https://i.gifer.com/ZLnU.gif" class="fadeInDown-animation"></div>
+                    <div class="top-right"><img src="https://i.gifer.com/ZLnU.gif" class="fadeInDown-animation"></div>
+                </div>
+            </div>
+            <div class="center-content center-content-width">
+                <div class="row row__centered"><img src="https://i.gifer.com/ZLnU.gif" class="small_waifu">
+                    <h3>About Neko Girl</h3><img src="https://i.gifer.com/ZLnU.gif" class="small_waifu">
+                </div>
+                <div class="row road_map">
+                    <div class="text-content">
+                        <p>NekoGirl is the stealthy crypto trader with cat-like reflexes, 
+                            always pouncing on market dips and leaping to new heights with the latest altcoin. 
+                            With her sharp instincts, she’s a master of navigating the crypto jungle—quiet, 
+                            elusive, but always ready for the next moonshot!</p>
+                        
+                    </div>
+                    <div class="row__first_child"><img src="_nuxt/full_body_2.CDb_mDhq.png" alt="Waifu Girl"></div>
+                </div>
+            </div>
+            <div class="app-content-chart">
+                <h3>Chart</h3><iframe id="dextools-widget" title="DEXTools Trading Chart" width="100%" height="400"
+                    src="https://www.dextools.io/widget-chart/en/base/pe-light/0x00000000000000000000000?theme=dark&amp;chartType=1&amp;chartResolution=30&amp;drawingToolbars=false"></iframe>
+            </div>
+            <div class="center-content">
+                <h3>Waifu NFTs</h3>
+                <div class="nft-row"><a href=""><img
+                            class="nft-thumb" src="_nuxt/nft1.DXUZLG9z.png" alt="nft-1"></a><a
+                        href=""><img class="nft-thumb"
+                            src="_nuxt/nft2.CXx7801m.png" alt="nft-2"></a><a
+                        href=""><img class="nft-thumb"
+                            src="_nuxt/nft3.Bt0vV1Ny.png" alt="nft-3"></a><a
+                        href=""><img class="nft-thumb"
+                            src="_nuxt/nft4.DzuLzn8B.png" alt="nft-4"></a></div><br>
+                <p class="waifu__nft">Support the WAIFU project and get your NFT on OpenSea</p><a
+                    href=""><button class="button-30-2"
+                        role="button">
+                        <!--[-->Buy NFT
+                        <!--]--></button></a>
+            </div>
+
+            <div class="center-content">
+                <h3>Waifunomics</h3>
+                <div class="row row__waifunomics">
+                    <div class="data-points">
+                        <span>Total Supply: 1,000,000,000</span>
+                        <span>liquidity 100% locked</span>
+                        <span>Contract renounced</span>
+                        <span>Tax 0/0</span>
+                    </div>
+                    <div class="row__first_child"><img src="_nuxt/glasses_girl_4.Dm35neLd.png"></div>
+                </div><br>
+                <div class="row-button"><button class="button-30-2" role="button">
+                        <!--[-->Whitepaper
+                        <!--]--></button></div>
+            </div>
+            <div class="center-content">
+                <h3>Socialmedia stats</h3><img src="_nuxt/hashtags4.B6MRdpkW.png" alt="Hashtag illustration"
+                    class="hashtags">
+            </div><span></span><br><span></span><br><br><br><br><br>
+            <!--]-->
+        </div>
+    </div>
+    <div id="teleports"></div>
+    <script type="application/json" id="__NUXT_DATA__" data-ssr="true">
+        [
+            ["ShallowReactive", 1], {
+                "data": 2,
+                "state": 4,
+                "once": 6,
+                "_errors": 7,
+                "serverRendered": 9,
+                "path": 10
+            },
+            ["ShallowReactive", 3], {},
+            ["Reactive", 5], {},
+            ["Set"],
+            ["ShallowReactive", 8], {},
+            true, "/"
+        ]
+    </script>
+    <script>
+        window.__NUXT__ = {};
+        window.__NUXT__.config = {
+            public: {},
+            app: {
+                baseURL: "/",
+                buildId: "46c4111a-aa11-4df5-b615-d99df3dc7fc7",
+                buildAssetsDir: "/_nuxt/",
+                cdnURL: ""
+            }
+        }
+    </script>
+</body>
+
+</html>
